@@ -53,7 +53,7 @@ test_user
 パスワードを入力してください：
 test_pass
 
-#このタイミングで暗号化のためのパスフレーズ入力が求められます。
+#このタイミングで暗号化のためのパスフレーズ入力が求められます
 
 #パスフレーズ入力後、暗号化が成功した場合
 test_service.txtを暗号化します
@@ -62,7 +62,7 @@ test_service.txtを暗号化したtest_service.txt.gpgを作成しました。
 #bを入力した場合
 b
 
-#現在登録されているサービス名が表示されます。
+#現在登録されているサービス名を表示
 --サービス名リスト--
 
 test_service
@@ -75,12 +75,12 @@ test_service
 test_service.txt.gpgを復号化します
 gpg: AES256.CFB暗号化済みデータ
 gpg: 1 個のパスフレーズで暗号化
-#test_serviceの情報を表示する。
+#test_serviceの情報を表示
 サービス名 : test_service
 ユーザー名 : test_user
 パスワード : test_pas
 
-#cを入力した場合、処理を終了します。
+#cを入力した場合、処理を終了
 c
 Thank you!
 ```
