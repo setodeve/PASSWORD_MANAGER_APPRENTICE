@@ -70,9 +70,9 @@ main(){
   do
     if [ $key = "a" ] ; then
       AddPassword
-    elif [ $key = "b" ] > /dev/null 2>&1 ; then
+    elif [ $key = "b" ] ; then
       GetPassword
-    elif [ $key = "c" ] > /dev/null 2>&1 ; then
+    elif [ $key = "c" ] ; then
       Exit
       break;
     else
