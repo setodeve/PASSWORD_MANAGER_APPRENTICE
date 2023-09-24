@@ -17,12 +17,37 @@ AddPassword(){
 
 #パスワード参照処理
 GetPassword(){
-  echo "Get"
+  echo "--サービス名リスト--"
+  echo ""
+  for i in *.txt; do echo "${i%.txt}"; done
+  echo ""
+  echo "--------------------"
+
+  echo "サービス名を入力してください："
+  read name
+  echo ""
+  ReadFile "$name"
 }
 
 #終了処理
 Exit(){
   echo "Thank you!"
+}
+
+#パスワードファイル読み込み処理
+ReadFile(){
+  dataname=("サービス名" "ユーザー名" "パスワード")
+  filename=./$1.txt
+  if [[ -f "$filename" ]]; then
+      i=0
+      while read line
+      do
+        echo "${dataname[$i]} : $line"
+        i=$((i+1))
+      done < $filename
+  else
+      echo "そのサービスは登録されていません。"
+  fi
 }
 
 #メニュー表示処理
@@ -43,7 +68,7 @@ main(){
 
   while true
   do
-    if [ $key = "a" ] > /dev/null 2>&1 ; then
+    if [ $key = "a" ] ; then
       AddPassword
     elif [ $key = "b" ] > /dev/null 2>&1 ; then
       GetPassword
