@@ -2,7 +2,17 @@
 
 #パスワード追加処理
 AddPassword(){
-  echo "Add"
+  echo "サービス名を入力してください：" 
+  read service_name
+  echo $service_name >> "./$service_name.txt"
+
+  echo "ユーザー名を入力してください：" 
+  read user_name
+  echo $user_name >> "./$service_name.txt"
+
+  echo "パスワードを入力してください：" 
+  read password
+  echo $password >> "./$service_name.txt"
 }
 
 #パスワード参照処理
