@@ -14,7 +14,7 @@
 
 ## 工夫した点
 ### 暗号化/復号化 : 
-[gpg](https://gnupg.org/documentation/manuals/gnupg24/gpg.1.html)を使用して、ファイルの暗号化と複合化を実装しています。
+[gpg](https://gnupg.org/documentation/manuals/gnupg24/gpg.1.html)を使用して、ファイルの暗号化と復号化を実装しています。
 
 ### 関数化 : 
 共通の処理や処理が複雑になった場合、別の関数に切り分けて可読性と拡張性を意識して実装しています。
@@ -29,12 +29,11 @@ menu選択時のkey入力をa,b,cで選択できるように、以下のよう�
 ```
 
 ## 実行方法
-※ 以下記載している#(シャープマーク)部分は処理の補足説明です。
 ```sh
 #password_manager.shの実行権限を付与
-chmod a+x password_manager.sh
+$ chmod a+x password_manager.sh
 #実行
-./password_manager.sh
+$ ./password_manager.sh
 
 パスワードマネージャーへようこそ！
 
@@ -44,14 +43,14 @@ chmod a+x password_manager.sh
  c : Exit
 
 #aを入力した場合
-a
+$ a
 
 サービス名を入力してください：
-test_service
+$ test_service
 ユーザー名を入力してください：
-test_user
+$ test_user
 パスワードを入力してください：
-test_pass
+$ test_pass
 
 #このタイミングで暗号化のためのパスフレーズ入力が求められます
 
@@ -60,7 +59,7 @@ test_service.txtを暗号化します
 test_service.txtを暗号化したtest_service.txt.gpgを作成しました。
 
 #bを入力した場合
-b
+$ b
 
 #現在登録されているサービス名を表示
 --サービス名リスト--
@@ -68,19 +67,19 @@ b
 test_service
 
 -----------------
-#test_serviceを入力した場合
 サービス名を入力してください：
-test_service
+$ test_service
 
 test_service.txt.gpgを復号化します
 gpg: AES256.CFB暗号化済みデータ
 gpg: 1 個のパスフレーズで暗号化
+
 #test_serviceの情報を表示
 サービス名 : test_service
 ユーザー名 : test_user
 パスワード : test_pas
 
 #cを入力した場合、処理を終了
-c
+$ c
 Thank you!
 ```
