@@ -13,13 +13,14 @@ AddPassword(){
   echo "パスワードを入力してください：" 
   read password
   echo $password >> "./$service_name.txt"
+  EncriptFile $service_name
 }
 
 #パスワード参照処理
 GetPassword(){
   echo "--サービス名リスト--"
   echo ""
-  for i in *.txt; do echo "${i%.txt}"; done
+  for i in *.txt.gpg; do echo "${i%.txt.gpg}"; done
   echo ""
   echo "--------------------"
 
@@ -37,14 +38,16 @@ Exit(){
 #パスワードファイル読み込み処理
 ReadFile(){
   dataname=("サービス名" "ユーザー名" "パスワード")
-  filename=./$1.txt
+  filename=./$1.txt.gpg
   if [[ -f "$filename" ]]; then
+      DecriptFile $1
       i=0
       while read line
       do
         echo "${dataname[$i]} : $line"
         i=$((i+1))
-      done < $filename
+      done < ./tmp_info.txt
+      rm ./tmp_info.txt
   else
       echo "そのサービスは登録されていません。"
   fi
@@ -58,6 +61,20 @@ ShowMenu(){
   echo " b : Get Password"
   echo " c : Exit"
   echo ""
+}
+
+#暗号化処理
+EncriptFile(){
+  echo "$1.txtを暗号化します"
+  gpg -c $1.txt
+  rm $1.txt
+  echo "$1.txtを暗号化した$1.txt.gpgを作成しました。"
+}
+
+#復号化処理
+DecriptFile(){
+  echo "$1.txt.gpgを復号化します"
+  gpg -d $1.txt.gpg >> tmp_info.txt
 }
 
 #main処理
